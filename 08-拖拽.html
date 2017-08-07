@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p style="position: absolute;">大家爱迪阿尔加</p>
+</body>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+	$(window).mousemove(function(event) {
+		$("p").stop().animate({
+			left:event.clientX,
+			top:event.clientY
+		}, 1)
+	});
+</script>
+</html>

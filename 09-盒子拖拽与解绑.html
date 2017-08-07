@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.box{
+		width: 200px;
+		height: 200px;
+		background: red;
+		position: absolute;
+	}
+</style>
+<body>
+	<div class="box">1</div>
+	<div class="box">2</div>
+	<div class="box">3</div>
+	<div class="box">4</div>
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript">
+		var $box=$(".box");
+		$box.each(function(index, el) {			
+			$(el).mousedown(function(event) {
+				var $that=$(this);
+				var x=event.clientX-$that.offset().left;
+				var y=event.clientY-$that.offset().top;
+
+				$(window).bind('mousemove', function(event) {
+					$that.animate({
+						left:event.clientX-x,
+						top:event.clientY-y
+					}, 1)
+				});
+				$(window).mouseup(function(event) {
+					$(window).unbind('mousemove')
+
+				});
+				return false;
+			});
+		});
+	</script>
+</body>
+</html>
